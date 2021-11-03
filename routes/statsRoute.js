@@ -7,4 +7,4 @@ const db = require("../database/db");
 
 statsRouter.get("/:shorturl-id", (req, res) => {});
 
-module.exports = shortUrlRouter;
+module.exports = statsRouter;
