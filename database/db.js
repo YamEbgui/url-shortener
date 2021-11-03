@@ -3,7 +3,6 @@ const fsAsync = require("fs/promises");
 const path = require("path");
 const util = require("util");
 const readFile = (filename) => util.promisify(fs.readFile)(filename, "utf-8");
-
 class DataBase {
   static #createShortCut() {
     const created = true;
@@ -17,16 +16,14 @@ class DataBase {
     }
     return shortUrl;
   }
-
   static async #readDataBase() {
     try {
-      const fileData = await readFile("../db.json");
-      return await fileData;
+      const fileData = await readFile("./db.json");
+      return fileData;
     } catch (error) {
       console.error(error);
     }
   }
-
   static async #createUrlObj(_originUrl) {
     let newShortCut = await this.#createShortCut();
     while (await this.#checkIfUrlExist(newShortCut)) {
@@ -39,20 +36,18 @@ class DataBase {
     };
     return urlObj;
   }
-
   static async addObjToDb(originUrl) {
-    await this.#writeUrl(await this.#createUrlObj(originUrl));
-    console.log("written succesfully");
+    return await this.#writeUrl(await this.#createUrlObj(originUrl));
   }
-
   static async #writeUrl(newObj) {
     const dataBase = JSON.parse(await this.#readDataBase());
     const objectsArr = dataBase.objects;
     objectsArr.push(newObj);
     dataBase.objects = objectsArr;
-    await fsAsync.writeFile("../db.json", JSON.stringify(dataBase));
+    await fsAsync.writeFile("./db.json", JSON.stringify(dataBase));
+    console.log(newObj);
+    return newObj.shortUrl;
   }
-
   static async #checkIfUrlExist(randomSequence) {
     const dataBase = await this.#readDataBase();
     for (let obj in dataBase.objects) {
@@ -63,7 +58,4 @@ class DataBase {
     return false;
   }
 }
-
-DataBase.addObjToDb(
-  "https://github.com/zivserphos/cyber4s-final1-boilerplate-url-shortener/tree/development"
-);
+module.exports = DataBase;
