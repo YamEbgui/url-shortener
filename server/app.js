@@ -17,12 +17,12 @@ app.use("/api/stats/", statsUrlRouter);
 
 app.use(errorHandler);
 
-// app.get("/", (req, res) => {
-//   res.sendFile(__dirname + "/views/index.html");
-// });
-
 app.get("/", (req, res) => {
-  res.send("test");
+  res.sendFile(__dirname + "/dist/index.html");
 });
+
+// app.get("/", (req, res) => {
+//   res.send("test");
+// });
 
 module.exports = app;
