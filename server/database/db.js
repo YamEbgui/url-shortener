@@ -1,9 +1,12 @@
+//import section
 const fs = require("fs");
 const fsAsync = require("fs/promises");
 const path = require("path");
 const util = require("util");
 const moment = require("moment");
 const readFile = (filename) => util.promisify(fs.readFile)(filename, "utf-8");
+
+//DataBase class that has methods for DataBase use
 class DataBase {
   static #createShortCut() {
     //function that generates a unique random sequnce
