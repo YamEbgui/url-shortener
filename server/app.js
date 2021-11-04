@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const shortUrlRouter = require("./routes/shortUrlRoute");
 const statsUrlRouter = require("./routes/statsRoute");
 const reDirectRouter = require("./routes/reDirectRoute");
@@ -15,7 +16,7 @@ app.use("/public", express.static(`./public`));
 app.use("/api/shorturl/", shortUrlRouter);
 app.use("/api/stats/", statsUrlRouter);
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("../dist/index.html"));
+  res.sendFile(path.resolve("./dist/index.html"));
 });
 app.use(errorHandler);
 
