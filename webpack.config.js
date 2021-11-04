@@ -2,6 +2,7 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -20,6 +21,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: "./front/index.html",
     }),
+    new FaviconsWebpackPlugin("./front/images/favicon (5).ico"),
 
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/

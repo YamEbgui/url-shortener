@@ -20,7 +20,7 @@ const getShortenVersion = async (_originUrl) => {
   } catch (err) {
     clearResultDiv();
     const errorsDiv = document.querySelector(".errors");
-    errorsDiv.textContent = "Invalid Url";
+    errorsDiv.textContent = err;
     setTimeout(() => {
       errorsDiv.firstChild.remove();
     }, 3000);
@@ -65,17 +65,17 @@ async function getStats(sequence) {
   try {
     const stats = await axios.get(`${baseServerPath}/api/stats/${sequence}`);
     return stats;
-  } catch (err) {}
+  } catch (err) {
+    return { data: { error: "Cant Reach Stats" } };
+  }
 }
 
 async function handlerStat(event) {
   let sequence;
   if (event.target.tagName === "SPAN") {
     sequence = event.target.parentElement.dataset.shorturl;
-    console.log(sequence);
   } else {
     sequence = event.target.dataset.shorturl;
-    console.log(sequence);
   }
   const stats = await getStats(sequence);
   const modal = document.getElementById("modal");
