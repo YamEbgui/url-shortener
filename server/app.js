@@ -14,13 +14,13 @@ app.use(express.json());
 app.use("/", reDirectRouter);
 app.use("/public", express.static(`./public`));
 app.use("/api/shorturl/", shortUrlRouter);
-app.use("/api/statistic/", statsUrlRouter);
+app.use("/api/stats/", statsUrlRouter);
 
 app.use(errorHandler);
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(__dirname + "/views/index.html");
+// });
 
 app.get("/", (req, res) => {
   res.send("test");

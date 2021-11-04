@@ -18,8 +18,19 @@ const getShortenVersion = async (_originUrl) => {
     console.log(response);
     return response.data;
   } catch (err) {
-    throw err;
+    clearResultDiv();
+    const errorsDiv = document.querySelector(".errors");
+    errorsDiv.textContent = "Invalid Url";
+    setTimeout(() => {
+      errorsDiv.firstChild.remove();
+    }, 3000);
   }
+  throw "INVAILD URL";
+};
+
+const clearResultDiv = () => {
+  const result = document.getElementById("resultUrl");
+  result.textContent = "";
 };
 
 const createResultDiv = (element, newSequence) => {
@@ -44,6 +55,20 @@ async function serveUrl() {
   createResultDiv(result, newSequence);
   //.append(`${baseServerPath}` + `/${originUrl}`);
 }
+
+const getStats = async (_shortUrl) => {
+  try {
+    const body = { originUrl: `${_originUrl}` };
+    const response = await axios.get(
+      `${baseServerPath}/api/stats/${_shortUrl}`,
+      { headers: { "content-type": "application/json" } }
+    );
+    console.log(response);
+    return response.data;
+  } catch (err) {}
+};
+
+const statsHandler = (event) => {};
 
 function createElement(tagName, children = [], classes = [], attributes = {}) {
   // create new element in more comfortable

@@ -22,10 +22,11 @@ h4 {
   text-align: center;
   border: 0.5px grey solid;
   transform: scale(1.5);
-  width: 70vh;
+  width: 50%;
   margin: auto;
   font-family: "Dosis", sans-serif;
 }
+
 #resultUrl {
   margin-top: 6vh;
   font-family: "Ubuntu", sans-serif;
@@ -233,4 +234,11 @@ body {
     font-weight: 100;
     font-style: normal;
   }
+}
+//errors section
+.errors {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 5.5vh;
+  color: $red;
 }
