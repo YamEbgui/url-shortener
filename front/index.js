@@ -57,7 +57,7 @@ const createResultDiv = (element, newSequence) => {
 };
 
 //handler function to the Submit button the create new URL and show it.
-const serveUrl = () => {
+const serveUrl = async () => {
   const inputValue = document.getElementById("urlInput").value;
   const newSequence = await getShortenVersion(inputValue);
   console.log(newSequence);
@@ -68,7 +68,7 @@ const serveUrl = () => {
 };
 
 //request for the server to get stats of the sequence that represents the origin URL
-const getStats = (sequence) => {
+const getStats = async (sequence) => {
   try {
     const stats = await axios.get(`${baseServerPath}/api/stats/${sequence}`);
     return stats;
