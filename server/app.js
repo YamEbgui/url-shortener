@@ -18,7 +18,7 @@ app.use("/api/stats/", statsUrlRouter);
 app.use(errorHandler);
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/dist/index.html");
+  res.sendFile(path.resolve("./dist/index.html"));
 });
 
 // app.get("/", (req, res) => {
