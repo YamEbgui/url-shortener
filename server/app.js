@@ -15,7 +15,7 @@ app.use("/public", express.static(`./public`));
 app.use("/api/shorturl/", shortUrlRouter);
 app.use("/api/stats/", statsUrlRouter);
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("./dist/index.html"));
+  res.sendFile(path.resolve("../dist/index.html"));
 });
 app.use(errorHandler);
 
