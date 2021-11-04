@@ -111,6 +111,7 @@ class DataBase {
         return dataBase.objects[i];
       }
     }
+    return false;
   }
 }
 module.exports = DataBase;

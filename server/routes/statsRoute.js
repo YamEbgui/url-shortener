@@ -7,9 +7,9 @@ const db = require("../database/db");
 
 statsRouter.get("/:shortUrl", async (req, res, next) => {
   try {
-    console.log(req.params.shortUrl);
+    console.log(req.params);
     let stats = await db.getObjectByShortUrl(req.params.shortUrl);
-    console.log(stats);
+
     if (!stats) {
       throw { status: 404, message: { error: "URL IS NOT EXIST IN DATABASE" } };
     }

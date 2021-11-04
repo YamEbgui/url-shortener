@@ -43,32 +43,60 @@ const createResultDiv = (element, newSequence) => {
     createElement(
       "button",
       [createElement("span", "stats")],
-      ["statsBtn", "btn"]
+      ["statsBtn", "btn"],
+      { "data-shorturl": newSequence }
     )
   );
+
+  element.children[1].addEventListener("click", (event) => handlerStat(event));
 };
 
 async function serveUrl() {
   const inputValue = document.getElementById("urlInput").value;
   const newSequence = await getShortenVersion(inputValue);
+  console.log(newSequence);
   const result = document.getElementById("resultUrl");
+  clearResultDiv();
   createResultDiv(result, newSequence);
   //.append(`${baseServerPath}` + `/${originUrl}`);
 }
 
-const getStats = async (_shortUrl) => {
+async function getStats(sequence) {
   try {
-    const body = { originUrl: `${_originUrl}` };
-    const response = await axios.get(
-      `${baseServerPath}/api/stats/${_shortUrl}`,
-      { headers: { "content-type": "application/json" } }
-    );
-    console.log(response);
-    return response.data;
+    const stats = await axios.get(`${baseServerPath}/api/stats/${sequence}`);
+    return stats;
   } catch (err) {}
-};
+}
 
-const statsHandler = (event) => {};
+async function handlerStat(event) {
+  let sequence;
+  if (event.target.tagName === "SPAN") {
+    sequence = event.target.parentElement.dataset.shorturl;
+    console.log(sequence);
+  } else {
+    sequence = event.target.dataset.shorturl;
+    console.log(sequence);
+  }
+  const stats = await getStats(sequence);
+  const modal = document.getElementById("modal");
+  modal.style.display = "flex";
+  document.getElementById("wrapper").style.display = "none";
+  for (let stat in stats.data) {
+    const statData = createElement(
+      "LI",
+      [`${stat}: ${stats.data[stat]}`],
+      ["statLi"]
+    );
+    modal.children[1].append(statData);
+  }
+}
+
+function closeStatsInfo() {
+  const modal = document.getElementById("modal");
+  document.querySelector(".details-modal-content").textContent = "";
+  modal.style.display = "none";
+  document.getElementById("wrapper").style.display = "flex";
+}
 
 function createElement(tagName, children = [], classes = [], attributes = {}) {
   // create new element in more comfortable
@@ -88,6 +116,9 @@ function createElement(tagName, children = [], classes = [], attributes = {}) {
   return el;
 }
 document.getElementById("submitBtn").addEventListener("click", serveUrl);
+document
+  .getElementById("closeStatInfo")
+  .addEventListener("click", () => closeStatsInfo());
 
 // const submitHandler = (event) =>{
 //     try{
