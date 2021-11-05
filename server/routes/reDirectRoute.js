@@ -7,22 +7,18 @@ const path = require("path");
 const db = require("../database/db");
 
 reDirectRouter.get("/:shortUrl", async (req, res, next) => {
-  if (req.params.shortUrl) {
-    try {
-      const originUrl = await db.getOriginUrl(req.params.shortUrl);
-      if (req.params.shortUrl) {
-      }
-      if (!originUrl) {
-        throw { status: 404, message: { error: "NOT FOUND" } };
-      }
-      if (originUrl.slice(0, 5) !== "http") {
-        return res.redirect(`http://${originUrl}`);
-      }
-
-      res.redirect(originUrl);
-    } catch {
-      next({ status: 404, message: { error: "NOT FOUND" } });
+  try {
+    const originUrl = await db.getOriginUrl(req.params.shortUrl);
+    if (!originUrl) {
+      throw { status: 404, message: { error: "NOT FOUND" } };
     }
+    if (originUrl.slice(0, 5) !== "http") {
+      return res.redirect(`http://${originUrl}`);
+    }
+
+    res.redirect(originUrl);
+  } catch {
+    next({ status: 404, message: { error: "NOT FOUND" } });
   }
 });
 
