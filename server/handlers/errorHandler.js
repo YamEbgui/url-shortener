@@ -1,5 +1,4 @@
 function errorHandler(error, req, res, next) {
-  console.log(error);
   switch (error.status) {
     case 404:
       res.status(404);

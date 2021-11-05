@@ -11,7 +11,6 @@ shortUrlRouter.post("/", async (req, res, next) => {
     if (isURL(req.body.originUrl)) {
       return res.send(await db.addObjToDb(req.body.originUrl));
     } else {
-      console.log(45555);
       next({ status: 400, message: { error: "Invalid URL" } });
     }
   } catch (err) {

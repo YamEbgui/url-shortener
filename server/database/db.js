@@ -124,6 +124,7 @@ class DataBase {
         if (dataBase.objects[i].shortUrl === _shortUrl) {
           dataBase.objects[i].views++;
           await fsAsync.writeFile("./server/db.json", JSON.stringify(dataBase));
+          console.log(dataBase.objects[i].originUrl);
           return dataBase.objects[i].originUrl;
         }
       }

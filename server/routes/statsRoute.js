@@ -8,7 +8,6 @@ const db = require("../database/db");
 
 statsRouter.get("/:shortUrl", async (req, res, next) => {
   try {
-    console.log(req.params);
     let stats = await db.getObjectByShortUrl(req.params.shortUrl);
 
     if (!stats) {

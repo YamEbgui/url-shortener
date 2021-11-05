@@ -17,7 +17,6 @@ const getShortenVersion = async (_originUrl) => {
       body,
       { headers: { "content-type": "application/json" } }
     );
-    console.log(response);
     return response.data;
   } catch (err) {
     clearResultDiv();
@@ -60,7 +59,6 @@ const createResultDiv = (element, newSequence) => {
 const serveUrl = async () => {
   const inputValue = document.getElementById("urlInput").value;
   const newSequence = await getShortenVersion(inputValue);
-  console.log(newSequence);
   const result = document.getElementById("resultUrl");
   clearResultDiv();
   createResultDiv(result, newSequence);
