@@ -1,27 +1,29 @@
-# ![Scale-Up Velocity](./readme-files/logo-main.png) Final 1 - URL shortner 📎
+# ![URL SHORTNER HEADLINE](.readme-files/URL_Shortner_Headline.png) Final 1 - URL shortner 📎
 
-In this project you will create your own [URL shortener](https://en.wikipedia.org/wiki/URL_shortening)!
+## Introduction
 
-This repository includes a basic template for starting the project:
+In this project I built my own [URL shortner](https://en.wikipedia.org/wiki/URL_shortening)!
+To create this website I used:
 
-## Instructions
+- Html
+- JavaScript
+- Scss
+- Webpack 5
+- Heroku
 
-- Fork this repository to your account as a **public** repo
-- Clone your new repository to your computer 🖥
-- Install the project dependencies by running `npm install` from the vscode terminal `ctrl + j` (make sure you are in the correct directory) 📂
-- [Create a new branch](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/managing-branches) for the development process
-- Make changes to the code to meet the project requirements 📝
-- [Commit Early, Push Often](https://www.worklytics.co/commit-early-push-often/) - your work will be evaluated by your git flow and overall github usage 🏄‍♂️
-- Before submitting, create a pull request from the development branch into the main branch. **Leave the PR open and do not merge the branches**. The open PR will be used to review and mark your code
-- Good Luck! 🤘
+To build my server I used Express.js framework.
 
-## Testing your project
+## Structure of the DataBase
 
-In this assignment, you will have to create your own tests, as learned in class. Your grade will be calculated by your test coverage.
+The URL adresses the user inserted to the website are storage in DataBase.
+the structure of this DataBase is:
 
-Optionally, You can create a github [action](https://docs.github.com/en/actions) that runs your tests on each commit:
-
-![Commits test](./readme-files/commit-tests.png)
+{"objects" : [
+{ originUrl: ,
+shortUrl:,
+views:,
+creatorDate: }
+]}
 
 ## Guidelines
 
@@ -40,6 +42,7 @@ Optionally, You can create a github [action](https://docs.github.com/en/actions)
 - Use a `class DataBase{}` to read/write (**Asynchronously**) all data in your back-end (you can use a json file as persistent layer)
 
 - Add another functionality to your service: a statistics route (`api/statistic/:shorturl-id`) that will respond with the following data per `shorturl-id`:
+
   - `creationDate` - a SQLDate format
   - `redirectCount` - the amount of times this url was used for redirection
   - `originalUrl`
