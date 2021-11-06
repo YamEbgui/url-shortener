@@ -34,12 +34,12 @@ h4 {
 }
 // link style
 a:link {
-  color: #f56fad;
+  color: #49a7ff;
   background-color: transparent;
   text-decoration: none;
 }
 a:visited {
-  color: #f56fad;
+  color: #49a7ff;
   background-color: transparent;
   text-decoration: none;
 }
@@ -91,30 +91,31 @@ body {
     margin: 20px 0;
   }
   .neon-text {
-    $random-text: "Sexy Url shortner";
+    $random-text: "url shortner";
     position: relative;
     $stroke-width: $large * 0.01;
     font-family: "Pacifico", cursive;
     text-transform: uppercase;
     font-size: $large;
-    color: lighten($pink, 25%);
+    color: lighten($blue, 28%);
     -webkit-text-stroke-width: $stroke-width;
-    -webkit-text-stroke-color: lighten($pink, 5%);
+    -webkit-text-stroke-color: lighten($blue, 5%);
     @include center;
-    text-shadow: 0 0 40px lighten($pink, 5%), 0 0 40px lighten($pink, 5%),
-      0 0 40px lighten($pink, 5%);
+    text-shadow: 0 0 40px lighten($blue, 5%), 0 0 40px lighten($blue, 5%),
+      0 0 40px lighten($blue, 5%);
     &:after {
       content: $random-text;
       z-index: -1;
       position: absolute;
       color: transparent;
       -webkit-text-stroke-width: $stroke-width;
-      -webkit-text-stroke-color: darken($pink, 80%);
+      -webkit-text-stroke-color: darken($blue, 80%);
       top: 1%;
       // left: 0.5px;
     }
   }
 }
+
 // button section
 @import url("https://fonts.googleapis.com/css?family=Amatic+SC");
 .button_container {
@@ -152,7 +153,7 @@ body {
   top: 0;
   height: 490%;
   width: 140%;
-  background: $pink;
+  background: $blue;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
