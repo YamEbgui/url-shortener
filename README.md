@@ -1,8 +1,14 @@
-# ![URL SHORTNER HEADLINE](.readme-files/URL_Shortner_Headline.png) Final 1 - URL shortner 📎
+# ![URL SHORTNER HEADLINE](./readme-files/URL_Shortner_Headline.png)
 
+
+This is the link to my website:
+https://sexyurlshortner.herokuapp.com/
+
+This is the link to my project in replit:
+https://replit.com/@YamEbgui/url-shortener#
 ## Introduction
-
-In this project I built my own [URL shortner](https://en.wikipedia.org/wiki/URL_shortening)!
+My website is made up of Backend and Frontend.
+In this project, I built my own [URL shortner](https://en.wikipedia.org/wiki/URL_shortening)!
 To create this website I used:
 
 - Html
@@ -11,11 +17,19 @@ To create this website I used:
 - Webpack 5
 - Heroku
 
-To build my server I used Express.js framework.
+To build my server I used the Express.js framework.
+
+# BackEnd
+## How it Built
+The server is made up of routers , dataBase class, and error handler. 
+Class dataBase is used here to build an object of URL and rewrite the dataBase file. 
+Also, it is used to get the stats of each new URL address the dataBase has.
+The routers get the request from the user and make his request using the dataBase class. 
+If the routers cannot fulfill the user request the request move forward to error handler.
 
 ## Structure of the DataBase
 
-The URL adresses the user inserted to the website are storage in DataBase.
+The URL addresses the user inserted into the website are storage in DataBase.
 the structure of this DataBase is:
 
 {"objects" : [
@@ -25,87 +39,8 @@ views:,
 creatorDate: }
 ]}
 
-## Guidelines
+# FrontEnd
+# ![URL SHORTNER INTERFACE](./readme-files/URL_Shortner_Interface.png.jpg)
 
-- Create a route `/api/shorturl/` in your `express` app that will handle all url shortening requests. (We recommend using [express Router](https://expressjs.com/en/guide/routing.html))
 
-- Write/read **Asynchronously** a single JSON file as your DB
-
-- [Serve](https://expressjs.com/en/starter/static-files.html) your client files from your server at route `/`
-
-- Style and change your front-end as you wish. You can take inspiration from this [example](https://www.shorturl.at/)
-
-## Requirements
-
-- Examine thoroughly and copy all functionality of [this](https://url-shortener-microservice.freecodecamp.rocks/) FCC example
-
-- Use a `class DataBase{}` to read/write (**Asynchronously**) all data in your back-end (you can use a json file as persistent layer)
-
-- Add another functionality to your service: a statistics route (`api/statistic/:shorturl-id`) that will respond with the following data per `shorturl-id`:
-
-  - `creationDate` - a SQLDate format
-  - `redirectCount` - the amount of times this url was used for redirection
-  - `originalUrl`
-  - `shorturl-id`
-
-- Fully test your `express` app with `jest` and `supertest`. Test each end point response **including** error responses.
-
-  Use a separate DB file for your tests. _Hint: use [Environment variables](https://jestjs.io/docs/en/environment-variables)_
-
-## Bonus
-
-- Add any feature you desire. Some ideas worth extra points:
-  - Custom short URL. Support optional `shorturl-id` parameter in your `POST` request. Pay attention to error handling.
-  - Serve a styled statistics dashboard instead of the default JSON statistics
-  - Use the [`JSONBIN.io`](https://jsonbin.io/) service bin as your persistent layer in your back-end DB class (use CRUD operations to read write bins)
-  - Try implementing user management
-- Use supertest/puppeteer test to test any bonus feature you implemented
-
-**Add an explanation in `README.md` for each bonus feature you add and a link to any resource you used**
-
-## Grading policy
-
-- Using jsonbin.io with/instead of writing to files
-- Correct DB class usage
-- Code quality and style: indentation, Meaningful and non-disambiguate variable names, Comments and documentation, file and directory structure
-- Visual creativity, style your front-end to make it look awesome 💅🏿
-- Division to reusable functions, no code duplication
-- Git usage: meaningful commit messages, small commits, folder and file structures, README file, issues, etc...
-
-### Misc
-
-- [ ] **Add workflow scripts**
-  - [x] build - webpack build ./web into ./public folder
-  - [ ] dev - start a nodemon server && start webpack dev server
-  - [ ] deploy to heroku
-
-### Front
-
-- [ ] **make better design**
-- [x] **home page** - /app
-  - [x] url shorten input -> POST /api/shrten/ { url: <input url> }
-  - [x] bootstrap sexy design
-  - [x] nice error display
-- [ ] **stats page** /app/<UID>
-  - [ ] requests the stats from -> GET /api/stats/<UID>
-  - [ ] error display
-  - [ ] add dashboard with stats display:
-    - [ ] locations of requests
-    - [ ] unique requesters
-    - [ ] usage graph
-
-### Back
-
-- [x] POST /api/shorten/ { url: <input url> }
-  - [x] validate url
-  - [x] check if already was shortened
-  - [x] return the shorterned url
-  - [x] check if uid is realy unique
-- [x] GET /<UID>
-  - [x] store user req data
-  - [x] redirect to the URL
-- [x] GET /app
-  - [x] serve the static from ./public folder
-- [x] GET /api/stats/<UID>
-  - [x] respond with JSON of the stats
-- [x] **refactoring**
+This project was built in collaboration with Ziv Serphos and Nadav Vol.
